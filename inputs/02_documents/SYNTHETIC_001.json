@@ -1,0 +1,83 @@
+[
+  {
+    "type": "text",
+    "text": "Synthetic photocatalysis document for software testing",
+    "page_idx": 0,
+    "bbox": [
+      40,
+      40,
+      550,
+      100
+    ],
+    "text_level": 1
+  },
+  {
+    "type": "text",
+    "text": "Abstract",
+    "page_idx": 0,
+    "bbox": [
+      40,
+      130,
+      550,
+      190
+    ],
+    "text_level": 1
+  },
+  {
+    "type": "text",
+    "text": "This is a synthetic software fixture, not a published article or an experimental result. It describes a fictional photocatalytic carbon dioxide reduction workflow using an unchanged catalyst and a test additive. All statements serve only to exercise local text parsing and provenance tracking.",
+    "page_idx": 0,
+    "bbox": [
+      40,
+      220,
+      550,
+      280
+    ]
+  },
+  {
+    "type": "text",
+    "text": "Methods",
+    "page_idx": 0,
+    "bbox": [
+      40,
+      310,
+      550,
+      370
+    ],
+    "text_level": 1
+  },
+  {
+    "type": "text",
+    "text": "The fictional test compares input records with and without triethanolamine while keeping the catalyst identity and loading unchanged. No actual experiment was performed, no numerical measurement was collected, and no scientific conclusion can be drawn from this fixture. The parser should retain the paragraph and its page location.",
+    "page_idx": 0,
+    "bbox": [
+      40,
+      400,
+      550,
+      460
+    ]
+  },
+  {
+    "type": "text",
+    "text": "Results and discussion",
+    "page_idx": 0,
+    "bbox": [
+      40,
+      490,
+      550,
+      550
+    ],
+    "text_level": 1
+  },
+  {
+    "type": "text",
+    "text": "The expected software output is a document record, an abstract record, and text chunks with source identifiers. A second fictional mention of triethanolamine tests text retention. This example is deliberately too small for scientific ranking, reference retrieval, or an end-to-end model evaluation.",
+    "page_idx": 0,
+    "bbox": [
+      40,
+      580,
+      550,
+      640
+    ]
+  }
+]

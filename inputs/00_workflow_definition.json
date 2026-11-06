@@ -1,0 +1,168 @@
+{
+  "schema": "linear-stages.v2",
+  "selected_entity_record": "outputs/03_entity/entity_selection.json",
+  "main_metadata_catalog": "inputs/02_documents/catalog.csv",
+  "input_groups": [
+    "01_prompts",
+    "02_documents",
+    "03_platform_documents"
+  ],
+  "stages": [
+    {
+      "stage": 1,
+      "name": "corpus",
+      "dependencies": [],
+      "calls_model": false,
+      "model": null
+    },
+    {
+      "stage": 2,
+      "name": "candidates",
+      "dependencies": [
+        1
+      ],
+      "calls_model": true,
+      "model": "gpt-5.4"
+    },
+    {
+      "stage": 3,
+      "name": "entity",
+      "dependencies": [
+        1,
+        2
+      ],
+      "calls_model": false,
+      "model": null
+    },
+    {
+      "stage": 4,
+      "name": "claims",
+      "dependencies": [
+        1,
+        3
+      ],
+      "calls_model": true,
+      "model": "gpt-5.4-mini"
+    },
+    {
+      "stage": 5,
+      "name": "clusters",
+      "dependencies": [
+        1,
+        3,
+        4
+      ],
+      "calls_model": true,
+      "model": "gpt-5.4-mini"
+    },
+    {
+      "stage": 6,
+      "name": "support",
+      "dependencies": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "calls_model": false,
+      "model": null
+    },
+    {
+      "stage": 7,
+      "name": "themes",
+      "dependencies": [
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "calls_model": false,
+      "model": null
+    },
+    {
+      "stage": 8,
+      "name": "summaries",
+      "dependencies": [
+        1,
+        3,
+        4,
+        7
+      ],
+      "calls_model": true,
+      "model": "gpt-5.4-mini"
+    },
+    {
+      "stage": 9,
+      "name": "library",
+      "dependencies": [
+        1,
+        3,
+        4,
+        7
+      ],
+      "calls_model": false,
+      "model": null
+    },
+    {
+      "stage": 10,
+      "name": "scores",
+      "dependencies": [
+        1,
+        3,
+        4,
+        7,
+        8,
+        9
+      ],
+      "calls_model": true,
+      "model": "gpt-5.4"
+    },
+    {
+      "stage": 11,
+      "name": "ranking",
+      "dependencies": [
+        4,
+        7,
+        10
+      ],
+      "calls_model": false,
+      "model": null
+    },
+    {
+      "stage": 12,
+      "name": "systems",
+      "dependencies": [
+        3
+      ],
+      "calls_model": true,
+      "model": "gpt-5.4-mini"
+    },
+    {
+      "stage": 13,
+      "name": "export",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "calls_model": false,
+      "model": null
+    }
+  ],
+  "approval_policy": "Each model stage invocation requires its own CLI approval.",
+  "summary_scope": "Final-theme source papers; target role refers only to the upstream-selected entity.",
+  "scoring_scope": "Final-theme raw claim members; impact uses regenerated target-bound summaries.",
+  "ranking_scope": "Unchanged ranking formula and retained consensus memberships.",
+  "distribution": "source-with-synthetic-offline-example",
+  "next_command": ".\\agent.cmd run -Stage 1 -RunDirectory ..\\reviewed-example-run"
+}

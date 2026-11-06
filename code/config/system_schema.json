@@ -1,0 +1,124 @@
+{
+  "type": "object",
+  "properties": {
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "surface_name": {
+            "type": "string"
+          },
+          "canonical_name": {
+            "type": "string"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "catalyst",
+              "photosensitizer",
+              "both",
+              "uncertain",
+              "additive"
+            ]
+          },
+          "active_center_elements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "structure_type": {
+            "type": "string"
+          },
+          "mention_context": {
+            "type": "string",
+            "enum": [
+              "authors_experiment",
+              "literature_discussion",
+              "uncertain"
+            ]
+          },
+          "entity_relation": {
+            "type": "string",
+            "enum": [
+              "explicit",
+              "not_stated",
+              "uncertain"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "block_id": {
+                  "type": "string"
+                },
+                "quote": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "block_id",
+                "quote"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "entity_evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "block_id": {
+                  "type": "string"
+                },
+                "quote": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "block_id",
+                "quote"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "reaction_scope": {
+            "type": "string",
+            "enum": [
+              "photocatalytic_co2_reduction",
+              "other_reaction",
+              "uncertain"
+            ]
+          }
+        },
+        "required": [
+          "surface_name",
+          "canonical_name",
+          "aliases",
+          "role",
+          "active_center_elements",
+          "structure_type",
+          "mention_context",
+          "entity_relation",
+          "evidence",
+          "entity_evidence",
+          "reaction_scope"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "entities"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,2 @@
+# Canonical dependency pins are maintained in code/requirements.txt.
+-r code/requirements.txt

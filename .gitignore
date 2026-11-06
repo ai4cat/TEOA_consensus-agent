@@ -1,0 +1,52 @@
+# Python / environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Credentials and machine-local preferences
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.dpapi.json
+credentials*.json
+secrets*.json
+.config/
+.vscode/
+.idea/
+
+# Runtime records and large generated deliverables
+/communications/
+/outputs/
+/state/
+/work/
+/logs/
+/delivery/
+/runs/
+*.runs/
+*.log
+*.zip
+/inputs/agent_library/
+
+# Only the checked-in synthetic fixtures belong in this source distribution.
+# A real catalog may contain private metadata: review changes before committing.
+/inputs/02_documents/*
+!/inputs/02_documents/catalog.csv
+!/inputs/02_documents/SYNTHETIC_001.json
+/inputs/03_platform_documents/*
+!/inputs/03_platform_documents/catalog.csv
+!/inputs/03_platform_documents/SYNTHETIC_PLATFORM_001.json
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store

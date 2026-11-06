@@ -1,0 +1,49 @@
+"""Shared scoring rubrics for claim audit / evidence scoring steps.
+
+These strings are embedded verbatim into LLM prompts. Historically they
+lived only inside ``script/pipeline/audit.py``; Stage C introduces new
+scorers that need the same rubric text, so they are centralized here.
+
+Rules for editing:
+- Keep wording stable unless you intentionally want to change downstream
+  LLM behavior across every scorer that composes this rubric.
+- Do not rename the exported names without grepping all call sites.
+"""
+
+from __future__ import annotations
+
+IMPACT_SCORE_RUBRIC: str = (
+    "Impact Score rubric (0-4):\n"
+    "- 4: load-bearing, field. If false, changes a field-level mechanism conclusion, a generally used catalyst design rule, or a central selectivity explanation across multiple studies.\n"
+    "- 3: load-bearing, local. If false, changes a key experiment interpretation, control logic, or rate-determining-step assignment in the source paper.\n"
+    "- 2: intermediate. Impacts local discussion or downstream mechanistic framing, but does not overturn the paper's main conclusion or the field-level consensus.\n"
+    "- 1: peripheral. The claim motivates or contextualizes the study, but is not load-bearing for the mechanistic argument.\n"
+    "- 0: experimental condition only. Setup description only, with no mechanistic content and almost no downstream interpretive impact.\n"
+)
+
+
+IMPACT_GUARDRAILS: str = (
+    "Impact guardrails:\n"
+    "- Use 0 for claims that only describe experimental setup, reagent amounts, solvents, irradiation sources, or other condition-only details with no mechanistic content.\n"
+    "- Do NOT use 4 unless the claim is load-bearing beyond one narrow system and would shift a field-level mechanism or design rule if false.\n"
+    "- Do NOT use 4 for metric choice, benchmarking convention, reporting preference, or method-description claims.\n"
+    "- Do NOT use 4 for a single material/system result unless the evidence explicitly shows it overturns a general field-level design rule or mechanism.\n"
+    "- If the evidence is limited to one system, one model, or one narrow case and the claim is generalized, cap impact at 3.\n"
+    "- Use 3 instead of 4 for optimization heuristics, cocatalyst tips, nanostructuring tips, or interface-engineering suggestions that mainly affect experimental design.\n"
+)
+
+
+EVIDENCE_STRENGTH_RUBRIC: str = (
+    "Evidence Strength rubric:\n"
+    "- 3: direct evidence chain with claim-specific exclusion-style proof, such as structure, operando/in situ, kinetics, isotope labeling, or matched controls that rule out alternatives.\n"
+    "- 2: controls or comparisons exist, but key exclusion evidence is still missing.\n"
+    "- 1: indirect inference, correlation, or trend only; no decisive exclusion controls.\n"
+    "- 0: pure narrative, default assumption, review/source statement, or no claim-specific data.\n"
+    "- A paragraph can be explicit yet still be 0 or 1 if it only states a belief, summary, or trend without direct mechanistic proof.\n"
+    "- For raw-claim audits, an explicit source statement of the raw claim should be at least 1 even when it is narrative.\n"
+    "- A review/source statement without claim-specific data cannot be 3.\n"
+    "- A small number of decisive, direct studies can justify high evidence strength.\n"
+    "- Do not lower evidence strength just because support comes from only a few references.\n"
+)
+
+

@@ -1,0 +1,2 @@
+source_id,relative_path,discovery_doc_ids,doi,doi_source,sha256,metadata_provenance,pdf_identity_revalidated_by_this_change
+SYNTHETIC_001,SYNTHETIC_001.json,doc_0001,,synthetic_no_doi,28cd2f647f905147488dc06a11b13b867f286bdbdfd217a19214229c764a539a,original synthetic software fixture; no published source,false
