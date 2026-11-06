@@ -10,13 +10,19 @@ This repository includes the source code and synthetic examples. The full litera
 
 ## Workflow
 
-```mermaid
-flowchart LR
-    A["Main corpus"] --> B["Candidates & claims"]
-    B --> C["Evidence & rankings"]
-    C --> D["Research archive"]
-    E["Independent corpus"] --> F["Catalytic systems"]
-    F --> D
+```text
+Main corpus                Independent corpus
+     |                              |
+     v                              v
+Candidates and claims       Catalytic systems
+     |                              |
+     v                              |
+Evidence and rankings               |
+     |                              |
+     +---------------+--------------+
+                     |
+                     v
+              Research archive
 ```
 
 The workflow runs in 13 stages, with review checkpoints before model calls and explicit approval for online reference retrieval. See the [usage guide](docs/USAGE.md) for stage controls.
